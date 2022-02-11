@@ -1,30 +1,33 @@
-# simple pyqt5 example with a lable and a button
+from random import random
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 
 
-def clicked():
-    print("clicked")
+class MyWindow(QMainWindow):
+  def __init__(self):
+    super(MyWindow, self).__init__()
+    self.setGeometry(200, 200, 300, 300)
+    self.setWindowTitle("catch the button")
+    self.initUI()
 
+  def initUI(self):
+    self.label = QtWidgets.QLabel(self)
+    self.label.setText("Wild button")
+    self.label.move(50, 50)
 
-def window():
-    app = QApplication(sys.argv)
-    win = QMainWindow()
-    win.setGeometry(100, 100, 500, 300)
-    win.setWindowTitle('PyQt5 Example')
-    label = QtWidgets.QLabel(win)
-    label.setText('This is a PyQt5 Example')
-    label.move(100, 70)
-    button = QtWidgets.QPushButton(win)
-    button.setText('Click Me')
-    button.move(100, 100)
+    self.b1 = QtWidgets.QPushButton(self)
+    self.b1.setText("catch me!")
+    self.b1.clicked.connect(self.clicked)
 
-    # map the function to the button
-    button.clicked.connect(clicked)
-    win.show()
-    sys.exit(app.exec_())
+  def clicked(self):
+    self.b1.move(random()*100, random()*100)
 
+def __init__():
+  app = QApplication(sys.argv)
+  win = MyWindow()
+  win.show()
+  sys.exit(app.exec_())
 
-window()
+__init__()
