@@ -6,8 +6,10 @@ import sys
 
 
 class MyWindow(QMainWindow):
+  i=0
   def __init__(self):
     super(MyWindow, self).__init__()
+    
     self.setGeometry(0, 0, 1920, 1080)
     self.setWindowTitle("catch the button")
     self.initUI()
@@ -23,6 +25,8 @@ class MyWindow(QMainWindow):
 
   def clicked(self):
     self.b1.move(random()*1000, random()*1000)
+    self.i+= 1
+    self.label.setText(str(self.i))
 
 def __init__():
   app = QApplication(sys.argv)
