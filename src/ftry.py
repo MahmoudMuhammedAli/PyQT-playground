@@ -8,21 +8,21 @@ import sys
 class MyWindow(QMainWindow):
   def __init__(self):
     super(MyWindow, self).__init__()
-    self.setGeometry(200, 200, 300, 300)
+    self.setGeometry(0, 0, 1920, 1080)
     self.setWindowTitle("catch the button")
     self.initUI()
 
   def initUI(self):
     self.label = QtWidgets.QLabel(self)
     self.label.setText("Wild button")
-    self.label.move(50, 50)
+    self.label.setBaseSize(100, 100)
 
     self.b1 = QtWidgets.QPushButton(self)
     self.b1.setText("catch me!")
     self.b1.clicked.connect(self.clicked)
 
   def clicked(self):
-    self.b1.move(random()*100, random()*100)
+    self.b1.move(random()*1000, random()*1000)
 
 def __init__():
   app = QApplication(sys.argv)
