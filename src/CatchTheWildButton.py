@@ -24,9 +24,13 @@ class MyWindow(QMainWindow):
     self.b1.clicked.connect(self.clicked)
 
   def clicked(self):
-    self.b1.move(random()*1000, random()*1000)
+    self.b1.move(int(random()*1000), int(random()*1000))
     self.i+= 1
-    self.label.setText(str(self.i))
+    self.label.setText("You caught the button     " + str(self.i) + "     times")
+    self.update()
+
+  def update(self):
+    self.label.adjustSize()
 
 def __init__():
   app = QApplication(sys.argv)
